@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    if ("onhashchange" in window) {
+        window.onhashchange = function (ev) {
+            let hash = window.location.hash;
+            if (hash.length > 0) {
+                let startStr = "#";
+                let endStr = "?";
+                let start = hash.indexOf(startStr);
+                let end = hash.indexOf(endStr);
+                if (start < 0) {
+                    return;
+                }
+                start = start + startStr.length;
+                if (end < 0) {
+                    end = undefined;
+                } else {
+                    end = end - endStr.length;
+                }
+                let order = hash.substring(start, end);
+                let data = {};
+                if (end) {
+                    data = getRequest(hash.substring(end + endStr.length));
+                }
+            }
+        };
+    }
+
+    function getRequest(url) {
+        let theRequest = {};
+        if (url.indexOf("?") !== -1) {
+            let str = url.substr(1);
+            let strs = str.split("&");
+            for (let i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+</script>
+</body>
+</html>

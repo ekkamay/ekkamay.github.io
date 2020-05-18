@@ -1,0 +1,15 @@
+/*多语言链接样式*/
+.lang-list {
+    padding: 8px 15px;
+}
+/*.lang-list > .lang-item + .lang-item:before {
+    content: "|\00a0";
+    padding: 0 5px;
+    !* color: #cccccc; *!
+}*/
+.lang-list  > span{
+    padding: 0 5px;
+}
+.lang-list > .lang-item {
+    font-size:14px;
+}
