@@ -29,12 +29,12 @@
 <script type="text/javascript" src="js/comm/ubox.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/comm/wow.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/comm/alert.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/01897169.js?1589806624" charset="utf-8"></script>
+<script type="text/javascript" src="js/01897169.js?1590214612" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="css/comm/font/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/comm/animate.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/comm/box.css"/>
 <link rel="stylesheet" type="text/css" href="css/comm/alert.css"/>
-<link rel="stylesheet" type="text/css" href="css/01897169.css?1589806624"/>
+<link rel="stylesheet" type="text/css" href="css/01897169.css?1590214612"/>
 <script>
 	var batchArr = [];
 	var checkLoad = 0;//判断是否是回调完成的
@@ -393,7 +393,7 @@ $(function(){
 					<div class="logoStyle modSet">
 	
 
-<a href='index.html' target="_self"><img class="imgSet"  src="img/comm/img_load.gif" data-original="img/logo.png?1589806624" title="广东龙汇化学工业有限公司官网" alt="广东龙汇化学工业有限公司官网" style="width:auto; height:100%; position:relative; top:0; left:50%; transform:translate(-50%,0);"/></a>
+<a href='index.html' target="_self"><img class="imgSet"  src="img/comm/img_load.gif" data-original="img/logo.png?1590214612" title="广东龙汇化学工业有限公司官网" alt="广东龙汇化学工业有限公司官网" style="width:auto; height:100%; position:relative; top:0; left:50%; transform:translate(-50%,0);"/></a>
 
 
 </div>				</div>
@@ -524,7 +524,8 @@ function page_by_tag(content, tag) {
     // 选中第一页
     $('.dv-pagination .dv-link:first').trigger('click');
 }
-</script><link rel="stylesheet" type="text/css" href="//jz.rjzk.com.cn/css/smartphoto.min.css">
+</script>
+<link rel="stylesheet" type="text/css" href="//jz.rjzk.com.cn/css/smartphoto.min.css">
 <script src="//jz.rjzk.com.cn/js/jquery-smartphoto.js"></script>
 <style>
 .LNewsCon { width: 100%; float: left; overflow: hidden;}
@@ -612,7 +613,7 @@ function page_by_tag(content, tag) {
 	<div class="smallC" style="position:relative;">
 	
 	
-	<font class="songti xinxi newsInfoSet">浏览：0</font>
+	<font class="songti xinxi newsInfoSet">浏览：2</font>
 	
 	
 	<font class="songti xinxi newsInfoSet">作者：</font>
@@ -657,7 +658,14 @@ $(function(){
 });
 // 点击放大图片
 if($("body").width()<=640){
-	$("#newsDetail_style_01_1506318095542 .newsText").find("img").wrap("<a class='js-smart'></a>");  //详情
+	$("#newsDetail_style_01_1506318095542 .newsText").find("img").each(function(){
+		var num = $(this).parents('a').index();
+		if(num>=0){
+			var url = $(this).parents('a').attr('href');
+			if(url){return true;}
+		}
+		$(this).wrap("<a class='js-smart'></a>");  //详情
+	});
 	$("#newsDetail_style_01_1506318095542 .newsDetailsImg").wrap("<a class='js-smart'></a>");  //缩略图
 	$("#newsDetail_style_01_1506318095542 .js-smart").each(function(){
 		$(this).attr('href',$(this).find("img").attr('src'));
